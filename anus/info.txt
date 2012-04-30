@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"				"ANUS"
+	"version"			"beta"
+	"up_date"			"December 5, 2011"
+	"author_name"		"Derek_SM"
+	"author_email"		""
+	"author_url"		""
+	"info"				"An unworthy admin mod."
+	"override"			"0"
+}
