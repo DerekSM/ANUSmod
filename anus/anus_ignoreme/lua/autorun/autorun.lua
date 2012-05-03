@@ -11,9 +11,4 @@ anus.Prefix.CMsg = "anus ||"
 if (SERVER) then
 	print('"' .. anus.Info.Name .. '" initialized: Running version ' .. anus.Info.Version .. '; Made by ' .. anus.Info.Author .. ';\n ' .. anus.Info.Description .. '\n')
 	include("anus_server.lua")
-	AddCSLuaFile("anus_client.lua")
-end
-
-if (CLIENT) then
-	include("anus_client.lua")
 end

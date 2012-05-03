@@ -7,9 +7,9 @@ anus.Groups = {}
 --	You may change the group names, but it's not recommended.
 
 anus.Groups[999] = "Owner"
-anus.Groups[800] = "Super Admin"
-anus.Groups[600] = "Basic Admin"
-anus.Groups[500] = "Temp Admin"
+anus.Groups[800] = "Super anus"
+anus.Groups[600] = "Basic anus"
+anus.Groups[500] = "Temp anus"
 anus.Groups[300] = "Moderator"
 anus.Groups[100] = "VIP"
 anus.Groups[0] = "user"
@@ -68,15 +68,10 @@ end
 if (SERVER) then
 
 	hook.Add("PlayerAuthed", "qwertywutup", function( pl, steamid, uniqueid )
-		if SinglePlayer() then
-			pl:SetGroup( 999 )
-		else
-			-- We make a timer.Simple below so we don't get overrided by player_auth's
-			timer.Simple(0.01, function() anus.SQL.LoadPlayer( pl ) end)
-			timer.Create("update_my_Groupings_" .. steamid, 45, 0, function()
-				anus.SQL.LoadPlayer( pl )
-			end)
-		end
+		anus.SQL.LoadPlayer( pl )
+		timer.Create("update_my_Groupings_" .. steamid, 45, 0, function()
+			anus.SQL.LoadPlayer( pl )
+		end)
 	end)
 
 		-- arg[2] is group Grouping. Any "Group" (example 999) higher than the level previous is immune to that.
@@ -112,14 +107,6 @@ if (SERVER) then
 			anus.SQL.Query("REPLACE INTO anus_players VALUES(" .. sql.SQLStr(self:SteamID()) .. ", " .. sql.SQLStr(anus.GetGroupByID(group)) .. ");")
 			
 		end
-	end
-	
-	function _R.Player:IsSuperAdmin()
-		if ( self:IsUserGroup("superadmin") or self:IsUserGroup("Owner") or self.UserGroup == 999 ) then return true end
-	end
-	function _R.Player:IsAdmin( b_JustAdmin )
-		if self:IsUserGroup("admin") then return true end
-		if ( not b_JustAdmin ) then if self:IsSuperAdmin() then return true end end
 	end
 end
 
