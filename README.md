@@ -1,4 +1,5 @@
-ANUSmod
+ANUSmod - A Non Ugly Serverside mod(ification)
 =======
 
-A Non Ugly Serverside mod -- An &quot;addon&quot; made in pure Lua for a game called Garry&#39;s Mod.
+ANUSmod is written in the scripting language Lua.
+It only works in a game called Garry&#39;s Mod, which runs on the Source Engine.
